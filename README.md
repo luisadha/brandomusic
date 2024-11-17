@@ -1,6 +1,6 @@
 # brandomusic
 
- Shuffle music in ~/dowmloads
+ Shuffle music in ~/downloads (Termux)
 
 ## Install
 
@@ -13,7 +13,7 @@ a. start playing music
 ```sh
 ./brandomusic
 ```
-b. language
+b. english language
 ```sh
 ./brandomusic | trans -b :en # for english language
 ```
