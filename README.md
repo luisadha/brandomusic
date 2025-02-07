@@ -7,6 +7,12 @@
 ```sh
 wget luisadha.github.io/brandomusic && chmod +x ./brandomusic
 ```
+
+## Directly without install (playing online)
+```sh
+. <(curl -L https://luisadha.github.io/brandomusic)
+```
+
 ## Usage
 
 a. start playing music
