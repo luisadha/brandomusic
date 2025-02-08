@@ -1,2 +1,27 @@
 #<!DOCTYPE html><html lang="en"><head><title>Luisadha Homepage</title><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></head><body><h2>#!/data/data/com.termux/files/usr/bin/env bash</h2>
-shopt -s nullglob; shopt -s globstar; set +o noclobber; IFS='\' format='audio/mp3'; format2='audio'; file="${1:+${1}}"; file2="${1:-~/downloads/*.mp3}"; files="$(ls "${file:-${file2}}")"; n="${#files[@]}"; pick="${files[RANDOM % n]}"; result="$(printf "${0:+${pick}}" | shuf -n 1)"; tmp="/sdcard/Download/"$(basename "${result}")""; \cd "/sdcard/Download" &> /dev/null; \cp -rf "${result}" "${tmp}" &> /dev/null; echo "Siap mendengarkan musik? (y/N)"; read -s -n 1 answer; echo; case "$answer" in [Yy]) echo "warning: Centang selalu aplikasi pemutar favorit anda untuk dapat melewati popup setiap kali menjalankan perintah ini."; xdg-open --content-type ${format} "${tmp}"; sleep 1; echo; cd - &> /dev/null;; *) echo -e "O-K tidak apa-apa, mungkin lain kali."; rm -f "${tmp}"; cd - &> /dev/null;; esac; #</body></html>
+shopt -s nullglob globstar
+set +o noclobber
+IFS=$'\n'  # Gunakan newline sebagai pemisah array
+format='audio/mp3'; file="${1:-$HOME/downloads/*.mp3}"; files=($file); n=${#files[@]}; if (( n == 0 )); then echo "Tidak ada file MP3 ditemukan."; exit 1; fi
+pick="${files[RANDOM % n]}"
+tmp="/sdcard/Download/$(basename "$pick")"
+cd "/sdcard/Download" &>/dev/null
+cp -rf "$pick" "$tmp" &>/dev/null
+echo "Siap mendengarkan musik? (y/N)"
+read -s -n 1 answer
+echo
+case "$answer" in
+    [Yy]) 
+        echo "Warning: Centang selalu aplikasi pemutar favorit anda untuk melewati popup."
+        xdg-open --content-type "$format" "$tmp"
+        sleep 1
+        echo
+        ;;
+    *)
+        echo -e "O-K tidak apa-apa, mungkin lain kali."
+        rm -f "$tmp"
+        ;;
+esac
+
+cd - &>/dev/null;
+#</body></html>
