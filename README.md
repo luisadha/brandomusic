@@ -1,6 +1,6 @@
 # brandomusic
 
- Shuffle music in ~/downloads (Termux)
+ Shuffle music in ~/storage/music (Termux)
 
 ## Install
 
