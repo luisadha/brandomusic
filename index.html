@@ -2,8 +2,9 @@
 #<!--
 shopt -s nullglob globstar
 set +o noclobber
+MUSIC_DIR="${HOME}/storage/music"
 IFS=$'\n'  # Gunakan newline sebagai pemisah array
-format='audio/mp3'; file="${1:-$HOME/downloads/*.mp3}"; files=($file); n=${#files[@]}; if (( n == 0 )); then echo "Tidak ada file MP3 ditemukan."; exit 1; fi
+format='audio/mp3'; file="${1:-$MUSIC_DIR/*.mp3}"; files=($file); n=${#files[@]}; if (( n == 0 )); then echo "Tidak ada file MP3 ditemukan."; exit 1; fi
 pick="${files[RANDOM % n]}"
 tmp="/sdcard/Download/$(basename "$pick")"
 cd "/sdcard/Download" &>/dev/null
