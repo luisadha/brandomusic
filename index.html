@@ -1,32 +1,76 @@
-#<!DOCTYPE html><head><link rel="stylesheet" type="text/css" href="asciinema-player.css" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Usage</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" /><link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css"><script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script><script> hljs.initHighlightingOnLoad();</script><style>body { font-family: monospace; background: rgba(245, 245, 245, 1); } footer { font-size: 0.65rem; } a { color: inherit; text-decoration: none; } pre { white-space: pre-wrap; /* Supaya teks wrap otomatis */ word-wrap: break-word; /* Pastikan kata bisa pecah */ overflow-x: auto; /* Tambahkan scroll horizontal kalau tetap kepanjangan */ max-width: 100%; /* Hindari melebihi lebar layar */ } code { display: block; overflow-x: auto; /* Pastikan teks wrap */ border-radius: 4px; font-size: 1.1rem; color: #F0F0F0 !important; background: rgb(11 12 14) !important; } .github-fork-ribbon:before { background-color: rgb(11 12 14); } .hidden-text { white-space: nowrap; margin: 0; padding: 0; visibility: hidden; /* atau display: none; */  } .container { display: flex; flex-direction: column; /* Supaya item dalam satu kolom */ align-items: center; /* Biar rapi di tengah */ width: 100%; /* Hindari elemen terlalu lebar */ max-width: 100vw; /* Batasi sesuai lebar layar */ overflow-x: auto; /* Scroll kalau perlu */ }</style></head><body>: Brandomusic is written in bash <a class="github-fork-ribbon" href="https://github.com/luisadha/brandomusic" data-ribbon="Contribute on GitHub" title="Contribute on GitHub">Contribute on GitHub</a> <h2>
-#!/usr/bin/env bash </br></h2><span>luisadha.github.io/brandomusic Use this self-hosted script to Playing song on ~/storage/music on Termux.</span><h3>
-### <a name="usage" href="#usage">Bermain di Terminal</a></h2><pre><code code="shell">. <(curl -L luisadha.github.io/brandomusic)</code></pre><h3><span class="hidden-text">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brandomusic</title>
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    body { font-family: monospace; background: #f5f5f5; margin: 2rem; }
+    code { display: block; white-space: pre-wrap; background: #0b0c0e; color: #f0f0f0; padding: 1rem; border-radius: 5px; }
+    h2, h3 { font-family: sans-serif; }
+    footer { font-size: 0.8rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <h2>Brandomusic – Terminal Music Player</h2>
+  <p>
+    <strong>URL:</strong> <a href="https://luisadha.github.io/brandomusic">luisadha.github.io/brandomusic</a><br/>
+    Gunakan skrip ini untuk memutar musik langsung dari <code>~/storage/music</code> di Termux.
+  </p>
+  <h3>Cara Pakai:</h3>
+  <pre><code class="bash">. &lt;(curl -Ls https://luisadha.github.io/brandomusic)</code></pre>
+
+  <h3>Kode Bash:</h3>
+  <pre><code class="bash">
+#!/usr/bin/env bash
 set -eu
 shopt -s nullglob globstar
 set +o noclobber
+
 MUSIC_DIR="${HOME}/storage/music"
-IFS=$'\n'  # Gunakan newline sebagai pemisah array
-format='audio/mp3'; file="${1:-$MUSIC_DIR/*.mp3}"; files=($file); n=${#files[@]}; if (( n == 0 )); then echo "Tidak ada file MP3 ditemukan."; exit 1; fi
-pick="${files[RANDOM % n]}"
+IFS=$'\n'
+format='audio/mp3'
+
+# Cek dan ambil file MP3
+files=("${MUSIC_DIR}"/*.mp3)
+if (( ${#files[@]} == 0 )); then
+  echo "Tidak ada file MP3 ditemukan."
+  exit 1
+fi
+
+# Ambil file acak
+pick="${files[RANDOM % ${#files[@]}]}"
 tmp="/storage/download/$(basename "$pick")"
-cd "/storage/download" &>/dev/null
-cp -rf "$pick" "$tmp" &>/dev/null
-echo "Siap mendengarkan musik? (y/N)"
-read -s -n 1 answer
+
+# Salin ke download agar bisa dibuka
+cp -f "$pick" "$tmp" &>/dev/null || {
+  echo "Gagal menyalin file ke /storage/download"
+  exit 1
+}
+
+echo -n "Siap mendengarkan musik? (y/N) "
+read -s -n 1 answer < /dev/tty;
 echo
-case "$answer" in
-    [Yy]) 
-        echo "Warning: Centang selalu aplikasi pemutar favorit anda untuk melewati popup."
-        xdg-open --content-type "$format" "$tmp"
-        sleep 1
-        echo
-        ;;
-    *)
-        echo -e "O-K tidak apa-apa, mungkin lain kali."
-        rm -f "$tmp"
-        ;;
-esac
+
+if [[ "$answer" =~ [Yy] ]]; then
+  echo "Membuka lagu: $(basename "$pick")"
+  xdg-open --content-type "$format" "$tmp"
+  sleep 1
+else
+  echo "O-K tidak apa-apa, mungkin lain kali."
+  rm -f "$tmp"
+fi
+
+# Hapus file sementara dan keluar
 rm -f "$tmp"
-cd - &>/dev/null;
 set +eu
-#</code></pre><footer>#### Copyright (C) 2021-2025 <a href="https://luisadha.my.id">luisadha.my.id</a> (<a href="https://github.com/luisadha">github.com/luisadha</a>) ####</footer><a href="https://asciinema.org/a/704914" target="_blank"><img src="https://asciinema.org/a/704914.svg" /></a><div id="player"></div><script src="asciinema-player.min.js"></script><script> AsciinemaPlayer.create(     '/assets/704914.cast',    document.getElementById('player'),     { cols: 54, rows: 28 }   );  </script></body></html>
+  </code></pre>
+
+  <footer>
+    Copyright (C) 2021–2025 <a href="https://luisadha.my.id">luisadha.my.id</a> — <a href="https://github.com/luisadha/brandomusic">GitHub Project</a>
+  </footer>
+</body>
+</html>
