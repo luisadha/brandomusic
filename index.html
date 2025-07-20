@@ -44,7 +44,7 @@ fi
 
 # Ambil file acak
 pick="${files[RANDOM % ${#files[@]}]}"
-tmp="/storage/download/$(basename "$pick")"
+tmp="${HOME}/storage/downloads/$(basename "$pick")"
 
 # Salin ke download agar bisa dibuka
 cp -f "$pick" "$tmp" &>/dev/null || {
