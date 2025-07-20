@@ -1,30 +1,30 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brandomusic</title>
-  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
-  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <style>
-    body { font-family: monospace; background: #f5f5f5; margin: 2rem; }
-    code { display: block; white-space: pre-wrap; background: #0b0c0e; color: #f0f0f0; padding: 1rem; border-radius: 5px; }
-    h2, h3 { font-family: sans-serif; }
-    footer { font-size: 0.8rem; margin-top: 2rem; }
-  </style>
-</head>
-<body>
-  <h2>Brandomusic – Terminal Music Player</h2>
-  <p>
-    <strong>URL:</strong> <a href="https://luisadha.github.io/brandomusic">luisadha.github.io/brandomusic</a><br/>
-    Gunakan skrip ini untuk memutar musik langsung dari <code>~/storage/music</code> di Termux.
-  </p>
-  <h3>Cara Pakai:</h3>
-  <pre><code class="bash">. &lt;(curl -Ls https://luisadha.github.io/brandomusic)</code></pre>
-
-  <h3>Kode Bash:</h3>
-  <pre><code class="bash">
+#<!DOCTYPE html>
+#<html lang="id">
+#<head>
+#  <meta charset="UTF-8" />
+#  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+#  <title>Brandomusic</title>
+#  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
+#  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
+#  <script>hljs.initHighlightingOnLoad();</script>
+#  <style>
+#    body { font-family: monospace; background: #f5f5f5; margin: 2rem; }
+#    code { display: block; white-space: pre-wrap; background: #0b0c0e; color: #f0f0f0; padding: 1rem; border-radius: 5px; }
+#    h2, h3 { font-family: sans-serif; }
+#    footer { font-size: 0.8rem; margin-top: 2rem; }
+#  </style>
+#</head>
+#<body>
+#  <h2>Brandomusic – Terminal Music Player</h2>
+#  <p>
+#    <strong>URL:</strong> <a href="https://luisadha.github.io/brandomusic">luisadha.github.io/brandomusic</a><br/>
+#    Gunakan skrip ini untuk memutar musik langsung dari <code>~/storage/music</code> di Termux.
+#  </p>
+#  <h3>Cara Pakai:</h3>
+#  <pre><code class="bash">. &lt;(curl -Ls https://luisadha.github.io/brandomusic)</code></pre>
+#
+#  <h3>Kode Bash:</h3>
+#  <pre><code class="bash">
 #!/usr/bin/env bash
 set -eu
 shopt -s nullglob globstar
@@ -67,10 +67,10 @@ fi
 # Hapus file sementara dan keluar
 rm -f "$tmp"
 set +eu
-  </code></pre>
-
-  <footer>
-    Copyright (C) 2021–2025 <a href="https://luisadha.my.id">luisadha.my.id</a> — <a href="https://github.com/luisadha/brandomusic">GitHub Project</a>
-  </footer>
-</body>
-</html>
+#  </code></pre>
+#
+#  <footer>
+#    Copyright (C) 2021–2025 <a href="https://luisadha.my.id">luisadha.my.id</a> — <a href="https://github.com/luisadha/brandomusic">GitHub Project</a>
+#  </footer>
+#</body>
+#</html>
