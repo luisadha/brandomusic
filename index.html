@@ -1,31 +1,4 @@
-#<!DOCTYPE html>
-#<html lang="id">
-#<head>
-#  <meta charset="UTF-8" />
-#  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-#  <title>Brandomusic</title>
-#  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
-#  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
-#  <script>hljs.initHighlightingOnLoad();</script>
-#  <style>
-#    body { font-family: monospace; background: #f5f5f5; margin: 2rem; }
-#    code { display: block; white-space: pre-wrap; background: #0b0c0e; color: #f0f0f0; padding: 1rem; border-radius: 5px; }
-#    h2, h3 { font-family: sans-serif; }
-#    footer { font-size: 0.8rem; margin-top: 2rem; }
-#  </style>
-#</head>
-#<body>
-#  <h2>Brandomusic – Terminal Music Player</h2>
-#  <p>
-#    <strong>URL:</strong> <a href="https://luisadha.github.io/brandomusic">luisadha.github.io/brandomusic</a><br/>
-#    Gunakan skrip ini untuk memutar musik langsung dari <code>~/storage/music</code> di Termux.
-#  </p>
-#  <h3>Cara Pakai:</h3>
-#  <pre><code class="bash">. &lt;(curl -Ls https://luisadha.github.io/brandomusic)</code></pre>
-#
-#  <h3>Kode Bash:</h3>
-#  <pre><code class="bash">
-#!/usr/bin/env bash
+#!/usr/bin/env bash <!DOCTYPE html>  <html lang="id">   <head>       <meta charset="UTF-8" />       <meta name="viewport" content="width=device-width, initial-scale=1.0" />       <title>Brandomusic | Pilih Aplikasi Termux</title>         <link rel="stylesheet" href="asciinema-player.css" />         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />        <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css" />         <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js">         </script><script>hljs.initHighlightingOnLoad();         </script>         <script>function share() {      if (navigator.share) {      navigator.share({          title: document.title,          url: 'https://luisadha.github.io/brandomusic/'         });      } else {        alert("Fitur berbagi tidak didukung di browser ini.");      }    } </script>          <style>    body {      font-family: monospace;      background: #f5f5f5;      padding: 1em;    }    h2, h3 {      margin-top: 1.5em;    }   code {      display: block;      background: #0b0c0e;      color: #f0f0f0;      padding: 1em;      border-radius: 5px;      overflow-x: auto;    }    .github-fork-ribbon:before {      background-color: #0b0c0e;    }    footer {      font-size: 0.75rem;      margin-top: 3em;    }    .share-line {     display: flex;      align-items: center;     gap: 0.5em;      flex-wrap: wrap;      margin-top: 0.5em;    }    button {      font-family: inherit;      font-size: 0.9em;      padding: 0.4em 0.8em;      border: none;     background: #0b0c0e;      color: white;     border-radius: 4px;      cursor: pointer;    }   button:hover {      background: #333;    }    #player {     max-width: 100%;      margin-top: 1em;    }    iframe, .asciinema-player {      width: 100% !important;      height: auto !important;    }    .note {      font-size: 0.9em;      background: #fff9c4;      padding: 1em;      border-left: 5px solid #fbc02d;      margin-top: 1em;    }  </style>  <style> .share {    font-weight: bold;    position: relative; } .share:before {    content: ".";    font-size: 2.2em;    position: absolute;     bottom: -2.5px;    left: -4px; }  .share:after {     content: ":";    font-size: 2em;    position: absolute;    bottom: -6px;    right: -7px; } </style>       </head>         <body> <!-- Fork ribbon -->  <a class="github-fork-ribbon" href="https://github.com/luisadha/brandomusic"     data-ribbon="Contribute on GitHub" title="Contribute on GitHub">   Contribute on GitHub  </a>         <p><a href="https://luisadha.github.io/brandomusic">Brandomusic</a> Shuffle music in ~/storage/music (Termux)</p>         <p>— Gunakan skrip ini untuk memutar musik langsung dari ~/storage/music di Termux.</p>         <p>             <h3>Preview</h3>             <a href="https://asciinema.org/a/704914" target="_blank">                 <img src="https://asciinema.org/a/704914.svg" alt="Preview animation" style="max-width: 100%; height: auto;" />             </a>  <pre><code class="language-shell"> <!--
 #set -xv
   
 set -eu
@@ -69,11 +42,5 @@ fi
 # Hapus file sementara dan keluar
 rm -f "$tmp"
 set +eu
-#set +vx
-#  </code></pre>
-#
-#  <footer>
-#    Copyright (C) 2021–2025 <a href="https://luisadha.my.id">luisadha.my.id</a> — <a href="https://github.com/luisadha/brandomusic">GitHub Project</a>
-#  </footer>
-#</body>
-#</html>
+# --> </code></pre><h3>Bermain di Termux</h3><div class="share-line"><span>Salin kode di bawah atau</span><button onclick="share()"><img src="./assets/img/share-icon.png" alt="Share Icon" width="11px" height="11px"> Bagikan ke Termux (harus Nene-Ak47)</button>  </div> <pre>    <code class="language-shell">. &lt;(curl -L luisadha.github.io/brandomusic)</code></pre>   <div class="note">       <strong>Catatan: </strong>       Agar tombol <em>Bagikan ke Termux</em>      berfungsi dengan benar, kamu harus mengganti handler   </div> <code>termux-url-opener</code>ke Nene-Ak47. Panduan lengkap silahkan baca di <a href="https://github.com/luisadha/nene#api">https://github.com/luisadha/nene#api</a>       <footer>          <p> (C) 2021–2025            <a href="https://luisadha.my.id">luisadha.my.id</a>          <a href="https://github.com/luisadha">github.com/luisadha</a>           </p>       </footer>           </body>           </html>
+ 
