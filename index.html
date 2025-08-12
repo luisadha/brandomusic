@@ -4,7 +4,7 @@
 #set -eu
 shopt -s nullglob globstar
 set +o noclobber
-[ "$1" = "-v" ] || [ "$1" = "--version" ] && { echo "brandomusic version 1.0"; exit; } 
+[ "$1" = "-v" ] || [ "$1" = "--version" ] && { echo "brandomusic 1.0"; exit; } 
 MUSIC_DIR="${HOME}/storage/music"
 IFS=$'\n'
 format='audio/mp3'
