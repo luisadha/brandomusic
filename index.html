@@ -24,8 +24,11 @@ cp -f "$pick" "$tmp" &>/dev/null || {
   echo "Gagal menyalin file ke /storage/download"
   exit 1
 }
-printf "%q" "Siap mendengarkan musik? (y/N)"
-read -s -n 1 answer < /dev/tty;
+exec 4</dev/tty
+printf "Siap mendengarkan musik? (y/N)" > /dev/tty
+read -s -n 1 answer <&4  
+#printf "%q" "Siap mendengarkan musik? (y/N)"
+#read -s -n 1 answer < /dev/tty;
 echo
 
 if [[ "$answer" =~ [Yy] ]]; then
