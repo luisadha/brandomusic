@@ -24,7 +24,7 @@ cp -f "$pick" "$tmp" &>/dev/null || {
   echo "Gagal menyalin file ke /storage/download"
   exit 1
 }
-printf "%s\n" "Siap mendengarkan musik? (y/N)"
+printf "%q" "Siap mendengarkan musik? (y/N)"
 read -s -n 1 answer < /dev/tty;
 echo
 
