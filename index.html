@@ -12,7 +12,7 @@ format='audio/mp3'
 files=("${MUSIC_DIR}"/*.mp3)
 if (( ${#files[@]} == 0 )); then
   echo "Tidak ada file MP3 ditemukan."
-  exit 1
+  exit 0
 fi
 
 # Ambil file acak
